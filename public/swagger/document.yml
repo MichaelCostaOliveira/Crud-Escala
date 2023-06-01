@@ -1,0 +1,263 @@
+openapi: '3.0.2'
+info:
+  title: Escala Colaborador
+  version: '1.0'
+servers:
+  - url: http://escala-colaborador.local/api/v1
+    description: Ambiente Local
+components:
+  securitySchemes:
+    Bearer Token:
+      type: http
+      scheme: bearer
+      bearerFormat: TOKEN
+tags:
+  - name: "Autenticação"
+    description: "Login"
+paths:
+  /login:
+    post:
+      tags:
+        - "Autenticação"
+      summary: Logar usuário.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Autenticado.
+        '401':
+          description: Não Autorizado.
+
+  /colaborador:
+    get:
+      tags:
+        - "Colaborador"
+      summary: Colaborador.
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: perPage
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            type: string
+        - in: query
+          name: order_by
+          schema:
+            type: string
+        - in: query
+          name: order
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não Autorizado.
+
+  /colaborador/store:
+    post:
+      tags:
+        - "Colaborador"
+      summary: Colaborador.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                escala_trabalho_id:
+                  type: integer
+                matricula:
+                  type: integer
+                cpf:
+                  type: string
+      responses:
+        '200':
+          description: Autenticado.
+        '401':
+          description: Não Autorizado.
+
+  /colaborador/show/{id}:
+    get:
+      tags:
+        - "Colaborador"
+      summary: Colaborador.
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não Autorizado.
+
+
+  /colaborador/update/{id}:
+    put:
+      tags:
+        - "Colaborador"
+      summary: Colaborador.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                escala_trabalho_id:
+                  type: integer
+                matricula:
+                  type: integer
+                cpf:
+                  type: string
+      responses:
+        '200':
+          description: Autenticado.
+        '401':
+          description: Não Autorizado.
+
+  /colaborador/delete/{id}:
+    delete:
+      tags:
+        - "Colaborador"
+      summary: Colaborador.
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não Autorizado.
+
+  /colaborador/restore/{id}:
+    post:
+      tags:
+        - "Colaborador"
+      summary: Colaborador.
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não Autorizado.
+
+
+  /escala-trabalho:
+    get:
+      tags:
+        - "Escala Trabalho"
+      summary: Escala Trabalho.
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: perPage
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            type: string
+        - in: query
+          name: order_by
+          schema:
+            type: string
+        - in: query
+          name: order
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não Autorizado.
+
+  /escala-trabalho/store:
+    post:
+      tags:
+        - "Escala Trabalho"
+      summary: Escala Trabalho.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Autenticado.
+        '401':
+          description: Não Autorizado.
+
+  /escala-trabalho/show/{id}:
+    get:
+      tags:
+        - "Escala Trabalho"
+      summary: Escala Trabalho.
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não Autorizado.
+
+
+  /escala-trabalho/update/{id}:
+    put:
+      tags:
+        - "Escala Trabalho"
+      summary: Escala Trabalho.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Autenticado.
+        '401':
+          description: Não Autorizado.
+
+  /escala-trabalho/delete/{id}:
+    delete:
+      tags:
+        - "Escala Trabalho"
+      summary: Escala Trabalho.
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não Autorizado.
+
+  /escala-trabalho/restore/{id}:
+    post:
+      tags:
+        - "Escala Trabalho"
+      summary: Escala Trabalho.
+      responses:
+        '200':
+          description: Sucesso.
+        '401':
+          description: Não Autorizado.
